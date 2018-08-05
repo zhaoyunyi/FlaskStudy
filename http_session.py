@@ -10,6 +10,7 @@ app = Flask(__name__)
 app.secret_key = 'Jean_session_secret_key'
 # app.config['SECRET_KEY'] = os.urandom(24) 安全的密钥
 
+
 @app.route('/')
 def index():
     if 'username' in session:
