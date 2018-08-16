@@ -42,6 +42,18 @@ user = {'user_id': '11',
         'username': 'GiGi',
         'age': 18}
 
+
+userList = [{'user_id': '11',
+        'username': 'GiGi',
+        'age': 18},
+         {'user_id': '31',
+        'username': 'Jean',
+        'age': 30},
+         {'user_id': '21',
+        'username': 'zhaoyunyi',
+        'age': 20}
+     ]
+
 myResponse = MyBaseResponse()
 
 
@@ -77,7 +89,18 @@ class UserName(Resource):
         return jsonify(myResponse)
 
 
+class UserList(Resource):
+    def get(self):
+        myResponse.data = userList
+        myResponse.code = 200
+        myResponse.msg = '获取用户成功'
+        return jsonify(myResponse)
+
+
 api.add_resource(UserName, '/<string:user_id>')
+
+
+api.add_resource(UserList, '/userlist')
 
 if __name__ == '__main__':
     app.run(debug=True)
